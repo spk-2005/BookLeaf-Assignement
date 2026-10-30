@@ -1,0 +1,65 @@
+{
+  "company_overview": {
+    "name": "BookLeaf Publishing",
+    "description": "Self-publishing company operating in India and the US, processing 1,200+ books monthly across a catalog of 22,000+ titles.",
+    "packages": [
+      { "name": "Standard Free", "details": "No upfront cost" },
+      { "name": "Bestseller Breakthrough", "details": "Premium, paid package with marketing and distribution add-ons" }
+    ],
+    "services": "Cover design, typesetting, ISBN assignment, printing, distribution, and royalty management.",
+    "facilities": "In-house printing facility and warehouse in Delhi. Print partners include Repro India and Epitome Books."
+  },
+  "royalty_policy": {
+    "split": "80/20 royalty split: 80% of net profit per book to author, 20% to BookLeaf.",
+    "net_profit_formula": "MRP minus printing cost, platform commission (Amazon/Flipkart), and shipping charges.",
+    "calculation_cycle": "Royalties are calculated quarterly and paid within 45 days of the quarter ending.",
+    "minimum_threshold": "₹1,000. If accumulated royalties are below ₹1,000, they roll over to the next quarter.",
+    "payout_method": "Bank transfer to the account linked in the author dashboard.",
+    "transparency": "Authors can view a detailed royalty breakdown in their dashboard, showing sales figures per platform."
+  },
+  "isbn_policy": {
+    "assignment": "Every book published through BookLeaf receives a unique ISBN assigned by BookLeaf under BookLeaf's publisher imprint.",
+    "own_imprint": "If an author wants an ISBN under their own imprint, they must obtain it independently.",
+    "errors": "If an author reports an ISBN error (duplicate, wrong book linked on platforms), it is treated as a high-priority issue and escalated immediately to the production team with a 48-hour resolution timeline."
+  },
+  "printing_and_quality": {
+    "facilities": "In-house printing handles most orders. Overflow or specific format requirements go to Repro India or Epitome Books.",
+    "turnaround": "Standard print turnaround is 5–7 business days from order confirmation.",
+    "quality_guarantee": "If an author reports a quality issue (misprints, binding defects, color inconsistency), BookLeaf arranges a free reprint after verification. Author should share photos of defective copies."
+  },
+  "distribution_and_availability": {
+    "channels": ["Amazon India", "Flipkart", "Amazon US", "Amazon UK", "BookLeaf Store"],
+    "listing_timeframe": "New listings typically go live within 7–10 business days after publication is complete.",
+    "out_of_stock_sync": "If a book shows as 'Currently Unavailable' on a platform, it usually indicates a stock sync issue. BookLeaf's team can trigger a manual re-sync within 24–48 hours."
+  },
+  "production_stages": {
+    "stages": [
+      "Manuscript Received",
+      "Editing (if opted)",
+      "Cover Design",
+      "Typesetting",
+      "Proofreading",
+      "ISBN Assignment",
+      "Printing",
+      "Distribution Setup",
+      "Published & Live"
+    ],
+    "updates": "Authors are updated at each stage via email. Delays typically happen at Cover Design (waiting for author approval) and Proofreading (revision rounds)."
+  },
+  "tone_guidelines": {
+    "partnership": "Always empathetic and professional. Authors are partners, not customers to be managed.",
+    "acknowledgment": "Acknowledge the author's concern before jumping to solutions.",
+    "specificity": "Include actual numbers, dates, and statuses wherever possible rather than vague reassurances.",
+    "accountability": "If something is BookLeaf's fault (delayed royalties, ISBN error), own it directly with no corporate deflection.",
+    "timelines": "If an issue requires escalation, give a clear timeline (e.g. 'Our team will look into this and get back to you within 48 hours').",
+    "next_steps": "Always end with a clear next step for the author and/or the BookLeaf team."
+  },
+  "categories": [
+    "Royalty & Payments",
+    "ISBN & Metadata Issues",
+    "Printing & Quality",
+    "Distribution & Availability",
+    "Book Status & Production Updates",
+    "General Inquiry"
+  ]
+}
