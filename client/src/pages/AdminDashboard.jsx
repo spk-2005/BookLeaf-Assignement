@@ -82,11 +82,15 @@ export function AdminDashboard() {
       {/* Top Header */}
       <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
+          <span style={{ fontSize: '0.75rem', color: 'var(--color-brand)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-brand)' }} />
+            BookLeaf Operations Desk
+          </span>
           <h1 style={{ fontSize: '1.75rem', color: 'var(--color-primary)' }}>
-            Operations Support Desk
+            Support Queue & SLA Triage
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            BookLeaf publishing operations queue with AI auto-classification and context-aware resolution.
+            Centralized publishing operations queue with AI auto-classification and context-aware resolution.
           </p>
         </div>
 
@@ -117,12 +121,12 @@ export function AdminDashboard() {
           </div>
         </div>
 
-        <div className="card" style={{ padding: '1rem 1.25rem', borderLeft: '4px solid #3b82f6' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#2563eb' }}>
+        <div className="card" style={{ padding: '1rem 1.25rem', borderLeft: '4px solid var(--color-brand)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-brand)' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>Open Unresolved</span>
             <Clock size={16} />
           </div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 800, marginTop: '0.3rem', color: '#1d4ed8' }}>
+          <div style={{ fontSize: '1.5rem', fontWeight: 800, marginTop: '0.3rem', color: 'var(--color-brand)' }}>
             {metrics?.open_count || 0}
           </div>
         </div>

@@ -2,15 +2,37 @@
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* BookLeaf Brand Colors */
-  --color-primary: #0f172a;       /* Deep slate / ink */
-  --color-primary-light: #1e293b;
-  --color-accent: #059669;        /* Emerald leaf */
-  --color-accent-hover: #047857;
-  --color-accent-light: #ecfdf5;
-  --color-accent-border: #a7f3d0;
+  /* BookLeaf Official Logo Colors */
+  --color-brand: #f16977;         /* Official BookLeaf Coral-Pink */
+  --color-brand-hover: #e05362;
+  --color-brand-light: #fff5f6;   /* Subtle clean coral tint */
+  --color-brand-border: #fed7db;
+  --color-brand-dark: #be123c;
 
-  /* Priority Colors */
+  /* Primary Charcoal & Dark Elements (from BookLeaf Logo Typography) */
+  --color-primary: #2d2d2d;       /* Refined Logo Charcoal */
+  --color-primary-light: #3d3d3d;
+  --color-dark: #1f2428;
+
+  /* Accent mapping to Brand */
+  --color-accent: #f16977;
+  --color-accent-hover: #e05362;
+  --color-accent-light: #fff5f6;
+  --color-accent-border: #fed7db;
+
+  /* Clean Professional Surfaces */
+  --bg-page: #fbfbfc;            /* Ultra-clean minimal off-white canvas */
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f8f9fa;
+  --border-light: #eceff2;
+  --border-focus: #f16977;
+
+  /* Professional Typography */
+  --text-main: #2d2d2d;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+
+  /* Priority Colors (Clean, professional, high-clarity) */
   --color-critical: #dc2626;
   --color-critical-bg: #fef2f2;
   --color-critical-border: #fecaca;
@@ -25,31 +47,20 @@
   --color-low-border: #dbeafe;
 
   /* Status Colors */
-  --color-status-open: #3b82f6;
-  --color-status-open-bg: #eff6ff;
-  --color-status-progress: #8b5cf6;
-  --color-status-progress-bg: #f5f3ff;
-  --color-status-resolved: #10b981;
+  --color-status-open: #f16977;
+  --color-status-open-bg: #fff5f6;
+  --color-status-progress: #6366f1;
+  --color-status-progress-bg: #eef2ff;
+  --color-status-resolved: #059669;
   --color-status-resolved-bg: #ecfdf5;
   --color-status-closed: #64748b;
   --color-status-closed-bg: #f1f5f9;
 
-  /* Neutral Surface Colors */
-  --bg-page: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #f8fafc;
-  --border-light: #e2e8f0;
-  --border-focus: #059669;
-
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-dim: #94a3b8;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  /* Shadows - Minimal & Soft */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.08);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -77,8 +88,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 button, input, select, textarea {
@@ -87,18 +98,18 @@ button, input, select, textarea {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f1f3f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d1d5db;
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #9ca3af;
 }
 
 /* Layout Utilities */
@@ -106,29 +117,30 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--bg-page);
 }
 
 .main-content {
   flex: 1;
-  max-width: 1400px;
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
+  padding: 1.75rem 1.25rem 3.5rem;
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.9); }
 }
 
 .fade-in {
-  animation: fadeIn 0.25s ease-out forwards;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
 /* Buttons */
@@ -147,12 +159,14 @@ button, input, select, textarea {
 }
 
 .btn-primary {
-  background-color: var(--color-accent);
+  background-color: var(--color-brand);
   color: #ffffff;
+  border-color: var(--color-brand);
 }
 .btn-primary:hover {
-  background-color: var(--color-accent-hover);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  background-color: var(--color-brand-hover);
+  border-color: var(--color-brand-hover);
+  box-shadow: 0 4px 14px rgba(241, 105, 119, 0.35);
 }
 
 .btn-secondary {
@@ -162,7 +176,7 @@ button, input, select, textarea {
 }
 .btn-secondary:hover {
   background-color: var(--bg-card-subtle);
-  border-color: #cbd5e1;
+  border-color: #d8dde2;
 }
 
 .btn-dark {
@@ -170,7 +184,7 @@ button, input, select, textarea {
   color: #ffffff;
 }
 .btn-dark:hover {
-  background-color: var(--color-primary-light);
+  background-color: #1a1a1a;
 }
 
 .btn-sm {
@@ -187,7 +201,7 @@ button, input, select, textarea {
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 /* Priority Badges */
@@ -214,14 +228,14 @@ button, input, select, textarea {
 
 /* Status Badges */
 .badge-open {
-  background-color: var(--color-status-open-bg);
-  color: var(--color-status-open);
-  border: 1px solid #bfdbfe;
+  background-color: var(--color-brand-light);
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand-border);
 }
 .badge-in-progress {
   background-color: var(--color-status-progress-bg);
   color: var(--color-status-progress);
-  border: 1px solid #ddd6fe;
+  border: 1px solid #c7d2fe;
 }
 .badge-resolved {
   background-color: var(--color-status-resolved-bg);
@@ -234,7 +248,7 @@ button, input, select, textarea {
   border: 1px solid #cbd5e1;
 }
 
-/* Card Styling */
+/* Card Styling - Clean & Crisp */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
@@ -245,7 +259,7 @@ button, input, select, textarea {
 }
 
 .card:hover {
-  border-color: #cbd5e1;
+  border-color: #dce1e6;
   box-shadow: var(--shadow-md);
 }
 
@@ -260,7 +274,7 @@ button, input, select, textarea {
 .form-label {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--color-primary);
 }
 
 .form-input, .form-select, .form-textarea {
@@ -276,8 +290,8 @@ button, input, select, textarea {
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(241, 105, 119, 0.16);
 }
 
 .form-textarea {
@@ -285,18 +299,18 @@ button, input, select, textarea {
   resize: vertical;
 }
 
-/* Persona Switcher Bar */
+/* Persona Switcher Bar - Professional & Clean */
 .persona-bar {
-  background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
-  color: #e2e8f0;
-  padding: 0.5rem 1rem;
+  background: #24292e;
+  color: #e6edf3;
+  padding: 0.5rem 1.25rem;
   font-size: 0.8125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .persona-selector {
@@ -306,16 +320,20 @@ button, input, select, textarea {
 }
 
 .persona-select {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-sm);
   padding: 0.25rem 0.5rem;
   font-size: 0.8125rem;
   cursor: pointer;
 }
+.persona-select:focus {
+  outline: none;
+  border-color: var(--color-brand);
+}
 .persona-select option {
-  background-color: #0f172a;
+  background-color: #24292e;
   color: #ffffff;
 }
 
@@ -325,7 +343,7 @@ button, input, select, textarea {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.75rem;
-  color: #10b981;
+  color: var(--color-brand);
   font-weight: 600;
 }
 
@@ -333,6 +351,6 @@ button, input, select, textarea {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #10b981;
+  background-color: var(--color-brand);
   animation: pulseGlow 1.5s infinite ease-in-out;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useRealtime } from '../context/RealtimeContext';
-import { BookOpen, User, Shield, LogOut, Radio, ArrowRightLeft } from 'lucide-react';
+import { BookLeafLogo } from './BookLeafLogo';
+import { User, Shield, LogOut, ArrowRightLeft } from 'lucide-react';
 
 export function Navbar() {
   const { user, role, logout, switchAccount, demoAccounts } = useAuth();
@@ -12,11 +13,11 @@ export function Navbar() {
       {/* Top Demo Persona Switcher Bar for Evaluators */}
       <div className="persona-bar">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <span style={{ fontWeight: 600, color: '#38bdf8' }}>Demo Evaluator Switcher:</span>
-          <span style={{ color: '#94a3b8' }}>Quick-switch user to test RBAC & workflows:</span>
+          <span style={{ fontWeight: 600, color: '#f16977' }}>Demo Evaluator Switcher:</span>
+          <span style={{ color: '#cbd5e1' }}>Quick-switch between personas to test RBAC & workflows:</span>
         </div>
         <div className="persona-selector">
-          <ArrowRightLeft size={14} color="#38bdf8" />
+          <ArrowRightLeft size={14} color="#f16977" />
           <select
             className="persona-select"
             value={user?.email || ''}
@@ -42,69 +43,45 @@ export function Navbar() {
       <nav style={{
         background: '#ffffff',
         borderBottom: '1px solid var(--border-light)',
-        padding: '0.875rem 1.5rem',
+        padding: '0.875rem 1.75rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         boxShadow: 'var(--shadow-sm)'
       }}>
-        {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            textDecoration: 'none',
-            color: 'var(--color-primary)'
-          }}>
-            <div style={{
-              background: 'linear-gradient(135deg, #059669 0%, #0f172a 100%)',
-              color: '#ffffff',
-              padding: '0.5rem',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              <BookOpen size={20} />
-            </div>
-            <div>
-              <div style={{ fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-                BookLeaf
-              </div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Publishing
-              </div>
-            </div>
+        {/* Brand with Official BookLeaf Logo */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <div style={{ textDecoration: 'none' }}>
+            <BookLeafLogo size="sm" showTagline={false} />
           </div>
 
           <span style={{
-            background: role === 'admin' ? '#f5f3ff' : '#ecfdf5',
-            color: role === 'admin' ? '#7c3aed' : '#059669',
-            border: `1px solid ${role === 'admin' ? '#ddd6fe' : '#a7f3d0'}`,
-            padding: '0.2rem 0.6rem',
+            background: role === 'admin' ? '#f4f4f5' : '#fff5f6',
+            color: role === 'admin' ? '#27272a' : '#f16977',
+            border: `1px solid ${role === 'admin' ? '#e4e4e7' : '#fed7db'}`,
+            padding: '0.25rem 0.7rem',
             borderRadius: '999px',
             fontSize: '0.75rem',
             fontWeight: 700,
             display: 'flex',
             alignItems: 'center',
-            gap: '0.35rem'
+            gap: '0.4rem'
           }}>
-            {role === 'admin' ? <Shield size={12} /> : <User size={12} />}
+            {role === 'admin' ? <Shield size={13} /> : <User size={13} />}
             {role === 'admin' ? 'Admin Support Desk' : 'Author Portal'}
           </span>
         </div>
 
         {/* Real-time Status & Profile */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           {/* Live SSE Indicator */}
-          <div className="live-indicator" title={isConnected ? 'Live updates stream active' : 'Connecting to live stream...'}>
-            <span className="pulse-dot" style={{ backgroundColor: isConnected ? '#10b981' : '#f59e0b' }} />
+          <div className="live-indicator" title={isConnected ? 'Real-time updates stream active' : 'Connecting to live stream...'}>
+            <span className="pulse-dot" style={{ backgroundColor: isConnected ? '#f16977' : '#f59e0b' }} />
             <span>{isConnected ? 'Real-Time Sync' : 'Reconnecting...'}</span>
           </div>
 
           {/* User Profile */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-primary)' }}>
                 {user?.name}

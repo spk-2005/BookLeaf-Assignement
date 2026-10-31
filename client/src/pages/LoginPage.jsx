@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { BookOpen, Shield, User, ArrowRight, AlertCircle, Sparkles } from 'lucide-react';
+import { BookLeafLogo } from '../components/BookLeafLogo';
+import { Shield, User, ArrowRight, AlertCircle, Sparkles } from 'lucide-react';
 
 export function LoginPage() {
-  const { login, switchAccount, demoAccounts } = useAuth();
+  const { login, switchAccount } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -40,37 +41,29 @@ export function LoginPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'radial-gradient(circle at top right, #1e293b, #0f172a)',
-      padding: '1.5rem'
+      background: 'radial-gradient(circle at 50% 10%, #ffffff 0%, #f4f5f8 100%)',
+      padding: '2rem 1.25rem'
     }}>
       <div className="card fade-in" style={{
-        maxWidth: '520px',
+        maxWidth: '480px',
         width: '100%',
         padding: '2.5rem',
         background: '#ffffff',
+        border: '1px solid #e5e7eb',
         borderRadius: 'var(--radius-lg)',
-        boxShadow: 'var(--shadow-xl)'
+        boxShadow: '0 10px 35px rgba(0, 0, 0, 0.05)'
       }}>
-        {/* Brand */}
+        {/* Brand Logo from User Spec */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+          <BookLeafLogo size="lg" showTagline={true} />
+        </div>
+
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'linear-gradient(135deg, #059669 0%, #0f172a 100%)',
-            color: '#ffffff',
-            padding: '0.85rem',
-            borderRadius: '12px',
-            marginBottom: '0.75rem',
-            boxShadow: '0 4px 12px rgba(5, 150, 105, 0.3)'
-          }}>
-            <BookOpen size={30} />
-          </div>
-          <h1 style={{ fontSize: '1.65rem', color: 'var(--color-primary)' }}>
-            BookLeaf Publishing
-          </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '0.25rem' }}>
-            Author Support & Communication Portal
+          <h2 style={{ fontSize: '1.25rem', color: 'var(--color-primary)', fontWeight: 600 }}>
+            Author Support & Operations
+          </h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.8125rem', marginTop: '0.25rem' }}>
+            Sign in to track published titles, royalties, and support queries
           </p>
         </div>
 
@@ -82,7 +75,7 @@ export function LoginPage() {
             padding: '0.75rem',
             borderRadius: 'var(--radius-md)',
             marginBottom: '1.25rem',
-            fontSize: '0.875rem',
+            fontSize: '0.85rem',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
@@ -92,7 +85,7 @@ export function LoginPage() {
           </div>
         )}
 
-        {/* Standard Form */}
+        {/* Standard Email/Password Form */}
         <form onSubmit={handleSubmit} style={{ marginBottom: '1.5rem' }}>
           <div className="form-group">
             <label className="form-label">Email Address</label>
@@ -115,8 +108,8 @@ export function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', marginTop: '0.2rem' }}>
-              Note: Pre-seeded accounts use default password 'author123' / 'admin123'
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: '0.2rem' }}>
+              Default passwords: 'author123' / 'admin123'
             </span>
           </div>
 
@@ -134,9 +127,9 @@ export function LoginPage() {
         {/* 1-Click Evaluation Logins */}
         <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.75rem', color: 'var(--color-primary)' }}>
-            <Sparkles size={16} color="#059669" />
-            <span style={{ fontSize: '0.8125rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
-              1-Click Evaluation Sign In
+            <Sparkles size={15} color="#f16977" />
+            <span style={{ fontSize: '0.785rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              1-Click Demo Evaluation Sign In
             </span>
           </div>
 
@@ -145,12 +138,12 @@ export function LoginPage() {
               type="button"
               onClick={() => handleQuickLogin('admin@bookleaf.com')}
               className="btn btn-dark btn-sm"
-              style={{ justifyContent: 'flex-start', padding: '0.6rem 0.85rem' }}
+              style={{ justifyContent: 'flex-start', padding: '0.65rem 0.85rem' }}
             >
-              <Shield size={15} color="#a78bfa" />
+              <Shield size={15} color="#f16977" />
               <div style={{ textAlign: 'left', flex: 1 }}>
-                <div style={{ fontWeight: 700, fontSize: '0.8125rem' }}>Operations Lead (Admin Desk)</div>
-                <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Full queue, overrides, AI draft workbench</div>
+                <div style={{ fontWeight: 600, fontSize: '0.8125rem' }}>Operations Lead (Admin Desk)</div>
+                <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Queue triage, AI draft editor & overrides</div>
               </div>
             </button>
 
@@ -158,11 +151,11 @@ export function LoginPage() {
               type="button"
               onClick={() => handleQuickLogin('priya.sharma@email.com')}
               className="btn btn-secondary btn-sm"
-              style={{ justifyContent: 'flex-start', padding: '0.6rem 0.85rem' }}
+              style={{ justifyContent: 'flex-start', padding: '0.65rem 0.85rem' }}
             >
-              <User size={15} color="#059669" />
+              <User size={15} color="#f16977" />
               <div style={{ textAlign: 'left', flex: 1 }}>
-                <div style={{ fontWeight: 700, fontSize: '0.8125rem' }}>Priya Sharma (Author)</div>
+                <div style={{ fontWeight: 600, fontSize: '0.8125rem' }}>Priya Sharma (Author)</div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>2 titles • ₹3,570 pending royalty</div>
               </div>
             </button>
@@ -171,11 +164,11 @@ export function LoginPage() {
               type="button"
               onClick={() => handleQuickLogin('sneha.kulkarni@email.com')}
               className="btn btn-secondary btn-sm"
-              style={{ justifyContent: 'flex-start', padding: '0.6rem 0.85rem' }}
+              style={{ justifyContent: 'flex-start', padding: '0.65rem 0.85rem' }}
             >
-              <User size={15} color="#2563eb" />
+              <User size={15} color="#f16977" />
               <div style={{ textAlign: 'left', flex: 1 }}>
-                <div style={{ fontWeight: 700, fontSize: '0.8125rem' }}>Sneha Kulkarni (Author)</div>
+                <div style={{ fontWeight: 600, fontSize: '0.8125rem' }}>Sneha Kulkarni (Author)</div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>3 titles (including 'Midnight in Mysore' in Production)</div>
               </div>
             </button>

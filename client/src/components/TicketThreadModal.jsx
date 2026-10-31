@@ -355,7 +355,7 @@ export function TicketThreadModal({ ticketId, isOpen, onClose, onTicketUpdated }
                         maxWidth: '82%',
                         backgroundColor: isAdmin ? '#ffffff' : '#ffffff',
                         border: isAdmin ? '1px solid #bfdbfe' : '1px solid var(--border-light)',
-                        borderLeft: isAdmin ? '4px solid #3b82f6' : '4px solid #10b981',
+                        borderLeft: isAdmin ? '4px solid #3b82f6' : '4px solid var(--color-brand)',
                         borderRadius: 'var(--radius-md)',
                         padding: '1rem',
                         boxShadow: 'var(--shadow-sm)'
@@ -369,7 +369,7 @@ export function TicketThreadModal({ ticketId, isOpen, onClose, onTicketUpdated }
                         marginBottom: '0.4rem',
                         fontSize: '0.785rem'
                       }}>
-                        <strong style={{ color: isAdmin ? '#1d4ed8' : '#047857' }}>
+                        <strong style={{ color: isAdmin ? '#1d4ed8' : 'var(--color-brand-dark)' }}>
                           {msg.sender_name} {isAdmin ? '(BookLeaf Support)' : '(Author)'}
                         </strong>
                         <span style={{ color: 'var(--text-dim)', fontSize: '0.72rem' }}>
@@ -445,7 +445,7 @@ export function TicketThreadModal({ ticketId, isOpen, onClose, onTicketUpdated }
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                       {role === 'admin' && draftUsed && (
-                        <span style={{ color: '#059669', fontWeight: 600 }}>✓ AI Draft Loaded into Editor</span>
+                        <span style={{ color: 'var(--color-brand)', fontWeight: 600 }}>✓ AI Draft Loaded into Editor</span>
                       )}
                     </div>
                     <button

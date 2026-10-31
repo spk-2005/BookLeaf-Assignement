@@ -69,7 +69,7 @@ export function BookCard({ book }) {
           <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>
             Royalty Earned
           </div>
-          <div style={{ fontSize: '0.925rem', fontWeight: 700, marginTop: '0.15rem', color: '#059669' }}>
+          <div style={{ fontSize: '0.925rem', fontWeight: 700, marginTop: '0.15rem', color: 'var(--color-brand)' }}>
             ₹{book.total_royalty_earned ? book.total_royalty_earned.toLocaleString('en-IN') : 0}
           </div>
         </div>

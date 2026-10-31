@@ -78,34 +78,36 @@ export function AuthorDashboard() {
     <div className="main-content fade-in">
       {/* Welcome Banner */}
       <div style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-        color: '#ffffff',
+        background: '#ffffff',
+        border: '1px solid var(--border-light)',
+        borderLeft: '4px solid var(--color-brand)',
         borderRadius: 'var(--radius-lg)',
         padding: '1.75rem 2rem',
-        marginBottom: '1.5rem',
+        marginBottom: '1.75rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
         gap: '1rem',
-        boxShadow: 'var(--shadow-md)'
+        boxShadow: 'var(--shadow-sm)'
       }}>
         <div>
-          <span style={{ fontSize: '0.8125rem', color: '#10b981', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: '0.75rem', color: 'var(--color-brand)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-brand)' }} />
             BookLeaf Author Portal
           </span>
-          <h1 style={{ fontSize: '1.75rem', color: '#ffffff', marginTop: '0.2rem' }}>
+          <h1 style={{ fontSize: '1.65rem', color: 'var(--color-primary)', marginTop: '0.25rem', fontWeight: 600 }}>
             Welcome back, {user?.name}
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-            City: {user?.city} • Account ID: {user?.author_id}
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.8125rem' }}>
+            City: {user?.city} • Author ID: <strong>{user?.author_id}</strong>
           </p>
         </div>
 
         <button
           onClick={() => setIsSubmitModalOpen(true)}
           className="btn btn-primary"
-          style={{ padding: '0.75rem 1.25rem', fontSize: '0.925rem' }}
+          style={{ padding: '0.75rem 1.25rem', fontSize: '0.9rem' }}
         >
           <PlusCircle size={18} />
           <span>Submit a Support Query</span>
@@ -122,9 +124,9 @@ export function AuthorDashboard() {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: '0.8125rem', fontWeight: 600 }}>Total Titles</span>
-            <BookOpen size={18} color="#059669" />
+            <BookOpen size={18} color="var(--color-brand)" />
           </div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '0.4rem', color: 'var(--color-primary)' }}>
+          <div style={{ fontSize: '1.75rem', fontWeight: 700, marginTop: '0.4rem', color: 'var(--color-primary)' }}>
             {financials?.total_books || books.length}
           </div>
           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Published & in production</div>
@@ -133,9 +135,9 @@ export function AuthorDashboard() {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: '0.8125rem', fontWeight: 600 }}>Total Copies Sold</span>
-            <TrendingUp size={18} color="#2563eb" />
+            <TrendingUp size={18} color="var(--color-primary)" />
           </div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '0.4rem', color: 'var(--color-primary)' }}>
+          <div style={{ fontSize: '1.75rem', fontWeight: 700, marginTop: '0.4rem', color: 'var(--color-primary)' }}>
             {financials?.total_copies_sold ? financials.total_copies_sold.toLocaleString('en-IN') : 0}
           </div>
           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Across Amazon, Flipkart & Store</div>
@@ -144,9 +146,9 @@ export function AuthorDashboard() {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: '0.8125rem', fontWeight: 600 }}>Total Royalty Earned</span>
-            <Award size={18} color="#10b981" />
+            <Award size={18} color="var(--color-brand)" />
           </div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '0.4rem', color: '#059669' }}>
+          <div style={{ fontSize: '1.75rem', fontWeight: 700, marginTop: '0.4rem', color: 'var(--color-brand)' }}>
             ₹{financials?.total_royalty_earned ? financials.total_royalty_earned.toLocaleString('en-IN') : 0}
           </div>
           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>80% author net profit share</div>
@@ -155,9 +157,9 @@ export function AuthorDashboard() {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: '0.8125rem', fontWeight: 600 }}>Royalty Paid</span>
-            <DollarSign size={18} color="#6366f1" />
+            <DollarSign size={18} color="var(--color-primary)" />
           </div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '0.4rem', color: 'var(--color-primary)' }}>
+          <div style={{ fontSize: '1.75rem', fontWeight: 700, marginTop: '0.4rem', color: 'var(--color-primary)' }}>
             ₹{financials?.total_royalty_paid ? financials.total_royalty_paid.toLocaleString('en-IN') : 0}
           </div>
           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Direct bank payouts</div>

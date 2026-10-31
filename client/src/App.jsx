@@ -18,15 +18,15 @@ function AppContent() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f8fafc',
+        backgroundColor: 'var(--bg-page)',
         gap: '1rem'
       }}>
         <div style={{
-          width: '48px',
-          height: '48px',
+          width: '44px',
+          height: '44px',
           borderRadius: '50%',
-          border: '4px solid #e2e8f0',
-          borderTopColor: '#059669',
+          border: '3px solid #e5e7eb',
+          borderTopColor: '#f16977',
           animation: 'spin 0.8s linear infinite'
         }} />
         <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: '0.9rem' }}>

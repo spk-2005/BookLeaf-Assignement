@@ -201,15 +201,15 @@ export function TicketSubmitModal({ books = [], isOpen, onClose, onTicketCreated
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'var(--color-accent-light)',
-            border: '1px solid var(--color-accent-border)',
+            background: 'var(--color-brand-light)',
+            border: '1px solid var(--color-brand-border)',
             padding: '0.625rem 0.875rem',
             borderRadius: 'var(--radius-md)',
             marginBottom: '1.5rem',
             fontSize: '0.785rem',
-            color: '#065f46'
+            color: 'var(--color-brand-dark)'
           }}>
-            <Sparkles size={16} />
+            <Sparkles size={16} color="var(--color-brand)" />
             <span>
               BookLeaf's AI will automatically categorize and route your inquiry to the right operations desk for rapid resolution.
             </span>
