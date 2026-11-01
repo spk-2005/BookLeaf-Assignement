@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { initDatabase } from './db/database.js';
 import authRoutes from './routes/authRoutes.js';
 import authorRoutes from './routes/authorRoutes.js';
@@ -9,6 +12,9 @@ import adminRoutes from './routes/adminRoutes.js';
 import sseRoutes from './routes/sseRoutes.js';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Initialize DB schema on boot
 initDatabase();
@@ -73,6 +79,62 @@ app.get('/api/docs', (req, res) => {
     ]
   });
 });
+
+// Locate static frontend build directory (checks both server/public and client/dist)
+let staticDir = null;
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
+const serverPublicPath = path.resolve(__dirname, '../public');
+
+if (fs.existsSync(serverPublicPath)) {
+  staticDir = serverPublicPath;
+} else if (fs.existsSync(clientDistPath)) {
+  staticDir = clientDistPath;
+}
+
+if (staticDir) {
+  console.log(`[Static Files] Serving frontend from: ${staticDir}`);
+  app.use(express.static(staticDir));
+
+  // SPA fallback for all non-API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(staticDir, 'index.html'));
+  });
+} else {
+  // If static files are not present, provide a helpful dashboard at root
+  app.get('/', (req, res) => {
+    res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <title>BookLeaf API Server</title>
+          <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fbfbfc; color: #2d2d2d; padding: 3rem 1.5rem; text-align: center; }
+            .card { background: white; border: 1px solid #e5e7eb; border-radius: 12px; max-width: 600px; margin: 0 auto; padding: 2.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+            h1 { color: #f16977; margin-bottom: 0.5rem; font-size: 1.5rem; }
+            p { color: #64748b; line-height: 1.5; font-size: 0.95rem; }
+            .links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
+            a { color: #f16977; font-weight: 600; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #fed7db; border-radius: 6px; background: #fff5f6; }
+            a:hover { background: #fee2e2; }
+          </style>
+        </head>
+        <body>
+          <div class="card">
+            <h1>BookLeaf API Server Online</h1>
+            <p>The backend API is active and ready to accept requests.</p>
+            <div class="links">
+              <a href="/api/health">System Health</a>
+              <a href="/api/docs">API Documentation</a>
+            </div>
+          </div>
+        </body>
+      </html>
+    `);
+  });
+}
 
 // Centralized meaningful error handler (prevents generic 500s)
 app.use((err, req, res, next) => {

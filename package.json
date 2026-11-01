@@ -4,13 +4,14 @@
   "description": "BookLeaf Publishing Author Support & Communication Portal",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run start --prefix server\" \"npm run dev --prefix client\"",
+    "start": "node server/src/index.js",
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "seed": "npm run seed --prefix server",
     "build": "npm run build --prefix client",
+    "postinstall": "npm install --prefix server && npm install --prefix client",
     "install:all": "npm install && npm install --prefix server && npm install --prefix client"
   },
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^9.1.2"
   }
 }
