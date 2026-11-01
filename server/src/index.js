@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { initDatabase } from './db/database.js';
+import { db, initDatabase } from './db/database.js';
+import { seed } from './db/seed.js';
 import authRoutes from './routes/authRoutes.js';
 import authorRoutes from './routes/authorRoutes.js';
 import ticketRoutes from './routes/ticketRoutes.js';
@@ -18,6 +19,17 @@ const __dirname = path.dirname(__filename);
 
 // Initialize DB schema on boot
 initDatabase();
+
+// Auto-seed if database is fresh or empty
+try {
+  const userCount = db.prepare('SELECT count(*) as count FROM users').get()?.count || 0;
+  if (userCount === 0) {
+    console.log('[Database] Database is empty. Auto-seeding initial BookLeaf authors, books, and tickets...');
+    seed();
+  }
+} catch (seedErr) {
+  console.error('[Database Seed Warning]', seedErr.message);
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
