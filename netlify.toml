@@ -1,0 +1,12 @@
+# Netlify configuration for BookLeaf Portal
+
+[build]
+  base = "client"
+  publish = "client/dist"
+  command = "npm run build"
+
+# Single-Page Application (SPA) routing: redirect all paths to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

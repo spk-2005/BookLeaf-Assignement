@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '') + '/api';
 
 function getAuthHeader() {
   const token = localStorage.getItem('bookleaf_token');

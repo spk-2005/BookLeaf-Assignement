@@ -15,7 +15,8 @@ export function RealtimeProvider({ children }) {
       return;
     }
 
-    const eventSource = new EventSource(`/api/realtime/stream?token=${encodeURIComponent(token)}`);
+    const apiBase = import.meta.env.VITE_API_BASE_URL || '';
+    const eventSource = new EventSource(`${apiBase}/api/realtime/stream?token=${encodeURIComponent(token)}`);
 
     eventSource.onopen = () => {
       setIsConnected(true);
